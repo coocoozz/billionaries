@@ -16,8 +16,8 @@
   height: 270px;
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  align-items: start;
+  justify-content: flex-start;
+  align-items: flex-start;
   background-color: #2e313d;
   color: white;
   -webkit-box-shadow: 0px 6px 11px -3px rgba(48, 48, 48, 1);
@@ -31,6 +31,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .title {

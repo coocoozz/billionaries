@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import axios from "axios";
 import styles from "./index.module.css";
+import Link from "next/link";
 
 type Billionare = {
   id: string;
@@ -18,22 +19,24 @@ const Home: NextPage<Props> = ({ billionaries }) => {
   return (
     <div className={styles.layout}>
       {billionaries.map((v, i) => (
-        <div key={i} className={styles.billionare}>
-          <div className={styles.picture}>
-            <img
-              src={v.squareImage}
-              width="200"
-              height="200"
-              alt="no picture"
-            />
+        <Link key={i} href={`/person/${v.id}`}>
+          <div className={styles.billionare}>
+            <div className={styles.picture}>
+              <img
+                src={v.squareImage}
+                width="200"
+                height="200"
+                alt="no pictures"
+              />
+            </div>
+            <div className={styles.title}>
+              <span className={styles.name}>{v.name}</span>
+              <span className={styles.info}>
+                {v.netWorth} / {v.industries[0]}
+              </span>
+            </div>
           </div>
-          <div className={styles.title}>
-            <span className={styles.name}>{v.name}</span>
-            <span className={styles.info}>
-              {v.netWorth} / {v.industries[0]}
-            </span>
-          </div>
-        </div>
+        </Link>
       ))}
     </div>
   );

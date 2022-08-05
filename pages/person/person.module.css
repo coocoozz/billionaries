@@ -1,0 +1,15 @@
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.assets {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 5px;
+}
+
+.asset {
+  display: flex;
+  flex-direction: column;
+}
