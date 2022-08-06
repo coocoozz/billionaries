@@ -59,30 +59,37 @@ const Person: NextPage = () => {
     <>
       {!person && <div>No Data</div>}
       {person && (
-        <div>
-          <div className={styles.info}>
+        <div className={styles.layout}>
+          <div className={styles.personLayout}>
             <img
               src={person.squareImage}
               width="200"
               height="200"
               alt="no pictures"
             />
-            <span>{person.name}</span>
-            <span>Networth: {person.netWorth}</span>
-            <span>County: {person.country}</span>
-            <span>Industry: {person.industries[0]}</span>
-            <span>{person.bio.join("")}</span>
+            <span className={styles.personName}>{person.name}</span>
+            <span className={styles.personInfo}>
+              Networth: {person.netWorth}
+            </span>
+            <span className={styles.personInfo}>County: {person.country}</span>
+            <span className={styles.personInfo}>
+              Industry: {person.industries[0]}
+            </span>
+            <span className={styles.personBio}>{person.bio.join(" ")}</span>
           </div>
-          <div>
+          <div className={styles.assetLayout}>
             <h1>Financial Assets</h1>
             <div className={styles.assets}>
-              {person.financialAssets.map((v, i) => (
-                <div key={i} className={styles.asset}>
-                  <span>Ticker: {v.ticker}</span>
-                  <span>Shares: {v.sharePrice}</span>
-                  <span>Current Price: ${v.currentPrice}</span>
-                </div>
-              ))}
+              {person.financialAssets &&
+                person.financialAssets.map((v, i) => (
+                  <div key={i} className={styles.asset}>
+                    <span>Ticker: {v.ticker}</span>
+                    <span>Shares: {v.sharePrice.toFixed(2)}</span>
+                    {v.currentPrice && (
+                      <span>Current Price: ${v.currentPrice}</span>
+                    )}
+                  </div>
+                ))}
             </div>
           </div>
         </div>
